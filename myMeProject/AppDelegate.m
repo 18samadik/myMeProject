@@ -15,9 +15,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
-    [[UINavigationBar appearance] setBarTintColor:[UIColor greenColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor purpleColor]];
     
-    [[UINavigationBar appearance] setTintColor:[UIColor purpleColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor greenColor]];
     
     
     NSShadow *shadow = [[NSShadow alloc] init];
