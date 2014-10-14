@@ -29,6 +29,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,19 +59,40 @@
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.objects.count;
+    
+    if (section == 0) {
+        return 2;
+    }
+    else if (section == 1){
+    return 1;
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+else {
+    return 3;
+    }
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     NSDate *object = self.objects[indexPath.row];
     cell.textLabel.text = [object description];
-    return cell;
+    if (indexPath.section == 0){
+        cell.textLabel.text = @"STX";
+    }
+    else if (indexPath.section ==1){
+    cell.textLabel.text = @"Warrior";
+    }
+    else {
+        cell.textLabel.text = [NSString stringWithFormat:@"cell %i", indexPath.row];
+        }
+    
+        return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
